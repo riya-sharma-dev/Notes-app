@@ -1,0 +1,643 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  }
+
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url(bg.jpg) ;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-bottom: 100px;
+}
+
+header{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  max-width: 500px;
+
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+.search-box i {
+  margin-right: 10px;
+  color: gray;
+}
+
+#search {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+}
+
+
+
+
+
+.notes-container.center-empty{
+  display: flex !important ;  /* → grid ko override karega */
+  align-items: center;
+  gap: 10px;
+  flex-direction: column;
+   
+  width: 100%;
+}
+
+
+.empty p {
+  text-align: center;
+  color: white;
+    font-size: 25px;
+}
+
+.empty img{
+  height: 250px;
+width:  250px;
+}
+ header button{
+        padding: 10px 30px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    background-color: white;
+    font-size: 16px;
+    }
+
+
+header button:hover{
+  background-color: rgb(4, 55, 102);
+  color: white;
+}    
+
+.plusCon{
+  position: fixed;
+right: 30px;
+bottom: 40px;
+
+
+  
+}
+
+
+.plus-btn{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  padding: 10px;
+
+
+border: none;
+  background-color: rgb(45, 107, 148);
+  color: white;
+  box-shadow: 0 0 13px white;
+
+   display: flex;
+   align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.plus-btn i{
+  font-size: 40px; 
+}
+
+
+.plus-btn:hover{
+  transform: scale(1.05);
+}
+
+.plus-btn:active{
+  transform: scale(0.95);
+}
+
+.modal-hidden {
+  position: fixed;
+   inset: 0;       /* top, left bottom  */
+  
+
+  display: none;
+  background: rgba(0,0,0,0.4);
+z-index: 500;
+}
+
+.modal-hidden.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 100%;
+  max-width: 350px;
+
+  padding: 11px;
+  border-radius: 10px;
+  background-color: rgb(238, 232, 232);
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+.title, .content, .category{
+  padding: 10px;
+  
+}
+
+
+.addBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  
+}
+
+
+
+.addBtn #saveBtn{
+font-weight: 500;
+font-size: 18px;
+text-align: center;
+height: 40px;
+width: 180px;
+transition: 0.3s;
+border-radius: 10px;
+background-color: rgb(43, 43, 175);
+
+color: white;
+cursor: pointer;
+border: none;
+}
+
+#saveBtn:hover{
+background-color: rgb(77, 77, 218);
+color: white;
+transform: scale(1.05);
+}
+
+#saveBtn:active{
+  transform: scale(0.95);
+}
+
+
+.head{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  
+  }
+
+
+#closeBtn{
+  border: none;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  background-color: rgb(238, 232, 232)
+}
+
+#closeBtn:hover{
+background-color: rgb(196, 196, 196);
+transform: scale(1.05);
+border-radius: 50%;
+
+}
+
+#closeBtn:active{
+  transform: scale(0.95);
+}
+
+.notes-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+padding: 20px 40px;
+ 
+}
+
+.card {
+  width: 100%;   
+  min-width: 0;
+  height: 200px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  padding: 10px;
+  gap: 10px;
+
+
+
+  border-radius: 10px;
+  box-shadow: 0 0 10px wheat;
+  background-color:rgb(228, 228, 151) ;
+
+  word-wrap: break-word;
+}
+
+
+
+
+
+.card p{
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* 👈 kitni lines dikhani hai */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+
+#btnGrp{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+#buttons{
+    display: flex;
+    gap: 5px;
+}
+
+.delete, .edit, .date{
+  border: none;
+  cursor: pointer;
+  background-color:rgb(228, 228, 151) ;
+  
+}
+
+.delete:hover, .edit:hover{
+  transform: scale(1.05);
+}
+
+.delete:active, .edit:active{
+  transform: scale(0.95);
+}
+
+.view-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  background: rgba(0,0,0,0.5); /* dark overlay */
+  
+    display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 500;
+
+    pointer-events: none; /* 🔥 IMPORTANT */
+}
+
+.view-modal.show {
+  display: flex;
+    pointer-events: auto; /* only when active */
+}
+
+.view-content {
+  background: lightgoldenrodyellow;
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+   max-height: 90vh;
+  overflow-y: auto;
+    overflow-x: hidden;   /* ✅ fix */
+
+  word-wrap: break-word; 
+  overflow-wrap: break-word;
+}
+
+
+#viewText{
+font-size: 16px;
+line-height: 22px;
+}
+
+.view-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.view-content::-webkit-scrollbar-thumb {
+  background:  lightgoldenrodyellow;
+  border-radius: 10px;
+} 
+
+
+#viewTitle{
+  margin-bottom: 5px;
+}
+
+#closeView {
+  text-align: center;
+  float: right;
+  border: none;
+ width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+  border-radius: 50%;
+background-color: red;
+color: white;
+}
+
+#closeView:hover{
+transform: scale(1.05);
+
+}
+#closeView:active{
+transform: scale(0.95);
+
+}
+
+#viewCategory{
+  margin-top: 20px;
+  float: right;
+}       
+
+
+
+
+
+
+@media (max-width:540px){
+
+
+  header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .search-box{
+    width: 100%;
+    flex: 0 0 100%;
+    padding: 5px;
+  }
+
+  #search{
+    font-size: 13px;
+  }
+
+
+  .search-box i{
+    font-size: 14px;
+  }
+
+  header button{
+    padding: 6px 10px;
+    padding: 5px;
+    font-size: 14px;
+    flex: 1 1 30%;
+  }
+
+
+
+  .notes-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+     padding: 10px 10px 120px;
+    min-height: auto;
+    height: auto;
+    overflow: visible;
+    align-items: start;
+  }
+
+  .card {
+    width: 100%;
+    height: 150px;
+  }
+
+.card h2{
+  font-size: 20px;
+}
+
+.card p{
+  font-size: 14px;
+}
+
+
+.delete, .edit, .date{
+  font-size: 12px;
+}
+
+.card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.form{
+  max-width: 250px;
+  width: 100%;
+
+}
+
+
+.head h1{
+  font-size: 20px;
+}
+
+.form h2{
+  font-size: 16px;
+}
+
+
+.title, .content, .category{
+  padding: 5px;
+}
+  .modal-hidden.show {
+    
+    align-items: flex-start;
+    padding-top: 30px;
+  }
+
+.empty p{
+  font-size: 17px;
+}
+
+.empty img{
+  height: 160px;
+  width: 160px;
+}
+
+
+.view-content{
+  max-width: 300px;
+        max-height: 350px;
+}
+
+#viewTitle {
+font-size: 20px;
+}
+
+
+#viewText{
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.view-modal.show{
+  align-items: flex-start;
+   padding-top: 50px; 
+}
+
+
+.plusCon{
+ top: 500px;
+  z-index: 400;
+    right: 15px;
+}
+.plus-btn{
+  height: 60px;
+  width: 60px;
+}
+
+
+
+.plus-btn i{
+  font-size: 30px;
+}
+
+}
+
+
+@media (max-width:390px){
+  .notes-container{
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+@media (min-width:541px) and (max-width:750px){
+  header{
+    flex-wrap: wrap;
+    gap: 10px;
+    
+  }
+
+
+  .search-box{
+    max-width: 650px;
+    width: 100%;
+  }
+  .notes-container{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+
+  .view-content{
+    padding: 10px;
+    max-width: 350px;
+    width: 100%;
+  }
+
+  #viewText{
+    font-size: 14px ;
+    line-height: 20px;
+  }
+
+
+  .modal-hidden{
+  z-index: 5000;
+}
+
+.view-modal{
+  z-index: 6000;
+}
+
+.card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+}
+
+}
+
+
+
+@media (min-width:751px) and (max-width:850px){
+
+    header{
+    flex-wrap: wrap;
+    gap: 10px;
+    
+  }
+
+    .search-box{
+    max-width: 750px;
+    width: 100%;
+  }
+  .notes-container{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+
+
+  
+
+  .view-content{
+    padding: 10px;
+    max-width: 350px;
+    width: 100%;
+            max-height: 400px;
+            
+  }
+
+  #viewText{
+    font-size: 14px ;
+    line-height: 20px;
+  }
+
+    .modal-hidden.show {
+    
+    align-items: flex-start;
+    padding-top: 30px;
+  }
+
+  .view-modal.show{
+  align-items: flex-start;
+   padding-top: 50px; 
+}
+
+.plusCon{
+ top: 450px;
+    right: 15px;
+}
+}
+

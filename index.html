@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Notes app</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+
+
+  <header>
+  <div class="search-box">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="text" id="search" placeholder="Search note...">
+  </div>
+
+      
+    <button class="home">Home</button>
+    <button class="personal">Personal</button>
+    <button class="work">Work</button>
+   
+
+  </header>
+
+
+<!-- Notes list -->
+       <div class="notes-container"> </div>
+
+    <!-- add note -->
+<div class="plusCon"> <button class="plus-btn"> <i class="fa-solid fa-plus"></i> </button></div>
+
+
+<!-- Popup Form -->
+
+<div class="modal-hidden">
+
+  <div class="form">
+    <div class="head"> <h1>Add Note</h1>  <button id="closeBtn"><i class="fa-solid fa-xmark"></i></button></div>
+
+
+    <h2>Title</h2>
+    <input type="text" class="title" >
+
+
+
+<h2>Content</h2>
+    <textarea class="content" placeholder="Write note..."></textarea>
+
+    <h2>Category</h2>
+<select class="category">
+  <option value="">Select Category</option>
+  <option class="work"  value="work">Work</option>
+  <option class="home"  value="home">Home</option>
+  <option class="personal"  value="personal">Personal</option>
+</select>
+
+    <div class="addBtn"><button id="saveBtn">Save</button> </div>
+
+  </div>
+
+</div>
+
+
+<div class="view-modal" id="viewModal">
+
+  <div class="view-content">
+    <button id="closeView">✖</button>
+    <h2 id="viewTitle"></h2>
+    <p id="viewText"></p>
+    <h4 id="viewCategory"></h4>
+
+  </div>
+</div>
+
+<script src="script.js" ></script>
+</body>
+</html>
