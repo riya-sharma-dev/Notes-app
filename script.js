@@ -49,7 +49,7 @@ function showCard(list = data){
                 <img src="https://cdn-icons-png.flaticon.com/512/7486/7486754.png"/>
             </div>
         `
-
+    
         // “home nahi hoga toh selected category (work/personal) ke andar search hoga beacuse home shows us full list”
 
         }else if(currentFilter !== 'home'){
@@ -196,6 +196,7 @@ closeView.addEventListener('click', function(){
 // add btn and closeBtn
 let modalHidden = document.querySelector('.modal-hidden')
 
+
 let closeBtn = document.querySelector('#closeBtn')
 
 addNote.addEventListener('click', function(){
@@ -219,6 +220,7 @@ function getFilter(){
       i.content.toLowerCase().includes(search) 
     
     )
+    
   }
 
   return filtered
@@ -265,6 +267,10 @@ console.log(personalBtn);
 personalBtn.addEventListener('click', function(){
 
   currentFilter ="personal"
+  personalBtn.classList.add("activeBtn")
+  HomeBtn.classList.remove("activeBtn")
+  workBtn.classList.remove("activeBtn")
+
     document.querySelector('#search').value = ""
   showCard(getFilter())
 })
@@ -272,12 +278,20 @@ personalBtn.addEventListener('click', function(){
 
 HomeBtn.addEventListener('click', function(){
   currentFilter = "home"
+  HomeBtn.classList.add("activeBtn")
+  personalBtn.classList.remove("activeBtn")
+  workBtn.classList.remove("activeBtn")
+
     document.querySelector('#search').value = ""
   showCard(getFilter())
 })
 
 workBtn.addEventListener('click',function(){
   currentFilter ="work"
+  workBtn.classList.add("activeBtn")
+  personalBtn.classList.remove("activeBtn")
+  HomeBtn.classList.remove("activeBtn")
+  
     document.querySelector('#search').value = ""
   showCard(getFilter())
 })
@@ -332,3 +346,10 @@ showCard()
 // User ne sirf filter kiya → category important”
 
 // “home nahi hoga toh selected category (work/personal) ke andar search hoga”
+
+
+// “Block scope is limited to curly braces and applies to let/const, while local scope refers to variables inside a function. Block scope is more restrictive than function scope.”
+
+// javascript checks first only local scope  var follows local and ignore block
+
+

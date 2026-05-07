@@ -87,6 +87,11 @@ header button:hover{
   color: white;
 }    
 
+.activeBtn{
+    background-color: rgb(4, 55, 102);
+  color: white;
+}
+
 .plusCon{
   position: fixed;
 right: 30px;
