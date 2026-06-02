@@ -270,7 +270,7 @@ padding: 20px 40px;
 
 .card p{
   display: -webkit-box;
-  -webkit-line-clamp: 5; /* 👈 kitni lines dikhani hai */
+  -webkit-line-clamp: 3; /* 👈 kitni lines dikhani hai */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -336,7 +336,7 @@ padding: 20px 40px;
   overflow-y: auto;
     overflow-x: hidden;   /* ✅ fix */
 
-  word-wrap: break-word; 
+
   overflow-wrap: break-word;
 }
 
