@@ -13,6 +13,8 @@ let viewTitle = document.getElementById('viewTitle')
 let viewText = document.getElementById('viewText')
 let closeView = document.getElementById('closeView')
 
+let editId =null;
+
 
 function showCard(list = data){
     notesContainer.innerHTML = ""
@@ -69,9 +71,6 @@ notesContainer.innerHTML = `
     notesContainer.classList.remove("center-empty")
 
 
-
-
-
     list.forEach((item,index)=>{
         let card = document.createElement('div')
         let title = document.createElement('h2')
@@ -104,10 +103,23 @@ btnGrp.id ="btnGrp"
 
         buttons.id ="buttons"
 
+// Date formatting
+
+let currentDate = new Date(item.date).toLocaleDateString('en-IN',{
+   day:"numeric",
+    month:"short",
+    year:"numeric",
+       hour:"numeric",
+   minute:"2-digit"
+
+})
+
+
+
         let time = document.createElement('div')
 
 let date = document.createElement('span')
-date.textContent = item.date
+date.textContent = currentDate
 date.classList.add("date") 
 
 
@@ -141,32 +153,13 @@ edit.addEventListener('click',function(e){
 
     e.stopPropagation()   // 🔥 VERY IMPORTANT
 
+  titleInput.value = item.title
+  contentInput.value =  item.content
+  categoryValue.value = item.category
+
+  editId = item.id
  
-    let newTitle = prompt("Edit Title",item.title)
-    if (newTitle) {
-         item.title = newTitle
-
-         localStorage.setItem("data", JSON.stringify(data))
-           showCard(getFilter())
-    }
- 
-    let newContent = prompt("Edit Content",item.content)
-    if (newContent) {
-       item.content = newContent 
-
-         localStorage.setItem("data", JSON.stringify(data))
-           showCard(getFilter())
-    }
-
-      let newCategory  = prompt("Edit Category", item.category)
-      if (newCategory) {
-        item.category = newCategory.toLowerCase().trim()
-
-        localStorage.setItem("data", JSON.stringify(data))
-        showCard(getFilter())
-        
-      }
-
+    modalHidden.classList.add('show')
 })
 
 
@@ -298,7 +291,10 @@ workBtn.addEventListener('click',function(){
 
 
 
-saveBtn.addEventListener('click',function(){
+saveBtn.addEventListener('click',function(e){
+
+  e.preventDefault()
+
     let titleValue = titleInput.value
     let contentValue  = contentInput.value
 
@@ -306,13 +302,31 @@ saveBtn.addEventListener('click',function(){
       return  alert('please give a valid note')
     }
 
-data.push({
+
+    if (editId) {
+      
+      let item = data.find(i=> i.id === editId)
+
+      item.title = titleValue
+      item.content = contentValue
+      item.category = categoryValue.value
+
+    }
+    
+    else{
+
+      data.push({
   title: titleValue,
   content: contentValue,
   category: categoryValue.value.toLowerCase().trim(),
   id: Date.now(),
-  date:new Date().toLocaleTimeString()
+  date:new Date().toISOString()
 })
+
+
+    }
+
+    editId = null
 
 localStorage.setItem("data", JSON.stringify(data))
 
@@ -323,7 +337,9 @@ categoryValue.value = ""
  modalHidden.classList.remove('show')
 showCard(getFilter())
 
+
 })
+
 
 showCard()
 
@@ -353,3 +369,8 @@ showCard()
 // javascript checks first only local scope  var follows local and ignore block
 
 
+
+
+// In the edit event, I load the selected object's existing values into the form fields and store its id in editId. When the user clicks Save, I find the object with the matching id and update its properties with the new form values. Then I update localStorage and re-render the UI.
+
+// Kisi idea, logic, feature, ya solution ko actual code mein apply karna.

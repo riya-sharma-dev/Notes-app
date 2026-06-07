@@ -69,9 +69,11 @@ header{
 }
 
 .empty img{
-  height: 250px;
-width:  250px;
+  height: 320px;
+width:  320px;
 }
+
+
  header button{
         padding: 10px 30px;
     border-radius: 15px;
@@ -294,6 +296,11 @@ padding: 20px 40px;
   cursor: pointer;
   background-color:rgb(228, 228, 151) ;
   
+}
+
+.date{
+  font-size: 12px;
+  opacity: 0.7;
 }
 
 .delete:hover, .edit:hover{
@@ -585,10 +592,11 @@ font-size: 20px;
 }
 
 .card p {
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+ display: -webkit-box;
+-webkit-line-clamp: 4;
+line-clamp: 4;
+-webkit-box-orient: vertical;
+overflow: hidden;
 
 }
 
